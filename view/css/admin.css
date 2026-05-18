@@ -1,0 +1,60 @@
+body {
+    font-family: 'Times New Roman';
+    background: lightgray;
+    padding: 30px;
+}
+
+.panel {
+    background: white;
+    padding: 20px;
+    width: 800px;
+    margin: auto;
+    border: 1px solid gray;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid gray;
+    text-align: left;
+    color: black;
+}
+
+th {
+    background: SkyBlue;
+}
+
+.btn-activate {
+    padding: 5px 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-suspend {
+    padding: 5px 10px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.logout {
+    float: right;
+    padding: 8px 16px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
