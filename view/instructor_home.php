@@ -1,7 +1,9 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'instructor'){
-    header("Location: login.php");
+
+    header("Location: ../view/login.php");
+
     exit();
 }
 ?>
@@ -9,7 +11,9 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'instructor'){
 <html lang="en">
 <head>
     <title>Instructor Dashboard</title>
-    <link rel="stylesheet" href="css/instructor.css">
+
+    <link rel="stylesheet" href="../view/css/instructor.css">
+
 </head>
 <body>
 

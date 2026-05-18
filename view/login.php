@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <title>Login</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/login.css">
+=======
+    <link rel="stylesheet" href="../view/css/login.css">
+>>>>>>> moumita
 </head>
 <body>
 
@@ -26,7 +30,9 @@
     <p id="loginMessage"></p>
 
     <div class="register-link">
-        Don't have an account? <a href="register.php">Register here</a>
+
+        Don't have an account? <a href="../view/register.php">Register here</a>
+
     </div>
 
 </div>

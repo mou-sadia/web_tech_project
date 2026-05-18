@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register</title>
-    <link rel="stylesheet" href="css/register.css">
+    <title>Register</title>=
+    <link rel="stylesheet" href="../view/css/register.css">
+
 </head>
 <body>
 
@@ -40,7 +41,9 @@
 
     <div class="login-link">
         Already have an account?
-        <a href="login.php">Login here</a>
+
+        <a href="../view/login.php">Login here</a>
+
     </div>
 
 </div>
