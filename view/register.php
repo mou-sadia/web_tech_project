@@ -39,13 +39,12 @@
     <p id="message"></p>
 
     <div class="login-link">
-        Already have an account? 
-        <a href="login.php">Login here</a>
+        Already have an account? <a href="login.php">Login here</a>
     </div>
 
 </div>
 
-<script src="../controller/ajax.js"></script>
+<script src="../controller/register.js"></script>
 
 </body>
 </html>
