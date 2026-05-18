@@ -7,8 +7,7 @@ include "../Model/UserModel.php";
 
 $model = new UserModel();
 
-//reg
-
+// reg
 if(isset($_POST['action']) && $_POST['action'] == "register"){
 
     $name     = trim($_POST['name']);
@@ -53,8 +52,7 @@ if(isset($_POST['action']) && $_POST['action'] == "register"){
     exit();
 }
 
-//log
-
+// log
 if(isset($_POST['action']) && $_POST['action'] == "login"){
 
     $email    = trim($_POST['email']);
@@ -87,17 +85,17 @@ if(isset($_POST['action']) && $_POST['action'] == "login"){
             if($user['role'] == 'student'){
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => '../View/student_home.php'
+                    "redirect" => "/quiz_platform/view/student_home.php"
                 ]);
             }else if($user['role'] == 'instructor'){
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => '../View/instructor_home.php'
+                    "redirect" => "/quiz_platform/view/instructor_home.php"
                 ]);
             }else{
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => '../View/admin_panel.php'
+                    "redirect" => "/quiz_platform/view/admin_panel.php"
                 ]);
             }
             exit();
@@ -108,7 +106,7 @@ if(isset($_POST['action']) && $_POST['action'] == "login"){
     exit();
 }
 
-//admin (activ/not)
+// admin atv/not
 if(isset($_POST['action']) && $_POST['action'] == "toggle_active"){
 
     if($_SESSION['role'] !== 'admin'){

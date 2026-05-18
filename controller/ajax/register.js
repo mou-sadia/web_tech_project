@@ -30,12 +30,12 @@ document.getElementById("registerForm")
                 }else if(data.success){
                     document.getElementById("message").innerHTML = data.success;
                     setTimeout(function(){
-                        window.location.href = "login.php";
+                        window.location.href = "/quiz_platform/view/login.php";
                     }, 2000);
                 }
             }
         };
 
-        xhttp.open("POST", "../controller/AuthController.php", true);
+        xhttp.open("POST", "/quiz_platform/controller/AuthController.php", true);
         xhttp.send(formData);
     });

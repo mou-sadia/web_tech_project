@@ -33,6 +33,6 @@ document.getElementById("loginForm")
             }
         };
 
-        xhttp.open("POST", "../controller/AuthController.php", true);
+        xhttp.open("POST", "/quiz_platform/controller/AuthController.php", true);
         xhttp.send(formData);
     });
