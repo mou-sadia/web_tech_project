@@ -17,34 +17,38 @@ if($quizId == 0) {
 
 $instructorId = $_SESSION["user_id"];
 
-$getQuestionsSql = "SELECT id FROM questions WHERE quiz_id = ?";
-$stmt = mysqli_prepare($conn, $getQuestionsSql);
-mysqli_stmt_bind_param($stmt, "i", $quizId);
-mysqli_stmt_execute($stmt);
-$questionsResult = mysqli_stmt_get_result($stmt);
+mysqli_begin_transaction($conn);
 
-while($question = mysqli_fetch_assoc($questionsResult)) {
-    $questionId = $question['id'];
-    
-    $deleteOptionsSql = "DELETE FROM options WHERE question_id = ?";
-    $stmt2 = mysqli_prepare($conn, $deleteOptionsSql);
-    mysqli_stmt_bind_param($stmt2, "i", $questionId);
-    mysqli_stmt_execute($stmt2);
-}
+$deleteAnswersSql = "DELETE a FROM answers a INNER JOIN attempts at ON a.attempt_id = at.id WHERE at.quiz_id = ?";
+$stmt1 = mysqli_prepare($conn, $deleteAnswersSql);
+mysqli_stmt_bind_param($stmt1, "i", $quizId);
+$answersDeleted = mysqli_stmt_execute($stmt1);
+
+$deleteAttemptsSql = "DELETE FROM attempts WHERE quiz_id = ?";
+$stmt2 = mysqli_prepare($conn, $deleteAttemptsSql);
+mysqli_stmt_bind_param($stmt2, "i", $quizId);
+$attemptsDeleted = mysqli_stmt_execute($stmt2);
+
+$deleteOptionsSql = "DELETE o FROM options o INNER JOIN questions q ON o.question_id = q.id WHERE q.quiz_id = ?";
+$stmt3 = mysqli_prepare($conn, $deleteOptionsSql);
+mysqli_stmt_bind_param($stmt3, "i", $quizId);
+$optionsDeleted = mysqli_stmt_execute($stmt3);
 
 $deleteQuestionsSql = "DELETE FROM questions WHERE quiz_id = ?";
-$stmt3 = mysqli_prepare($conn, $deleteQuestionsSql);
-mysqli_stmt_bind_param($stmt3, "i", $quizId);
-mysqli_stmt_execute($stmt3);
+$stmt4 = mysqli_prepare($conn, $deleteQuestionsSql);
+mysqli_stmt_bind_param($stmt4, "i", $quizId);
+$questionsDeleted = mysqli_stmt_execute($stmt4);
 
 $deleteQuizSql = "DELETE FROM quizzes WHERE id = ? AND instructor_id = ?";
-$stmt4 = mysqli_prepare($conn, $deleteQuizSql);
-mysqli_stmt_bind_param($stmt4, "ii", $quizId, $instructorId);
-$result = mysqli_stmt_execute($stmt4);
+$stmt5 = mysqli_prepare($conn, $deleteQuizSql);
+mysqli_stmt_bind_param($stmt5, "ii", $quizId, $instructorId);
+$quizDeleted = mysqli_stmt_execute($stmt5);
 
-if($result) {
+if($answersDeleted && $attemptsDeleted && $optionsDeleted && $questionsDeleted && $quizDeleted) {
+    mysqli_commit($conn);
     header("Location: ../../view/instructor/dashboard.php?success=deleted");
 } else {
+    mysqli_rollback($conn);
     header("Location: ../../view/instructor/dashboard.php?error=Failed to delete quiz");
 }
 exit();

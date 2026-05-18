@@ -1,0 +1,45 @@
+body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+a { color: #007bff; margin-right: 10px; }
+.quiz-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.quiz-card { border: 1px solid #ddd; padding: 12px; width: 260px; border-radius: 6px; background:#fff; }
+.btn { display:inline-block; padding:6px 10px; background:#007bff; color:#fff; text-decoration:none; border-radius:4px; }
+.btn.start { background: #28a745; }
+.question { margin-bottom: 14px; padding:8px; border-bottom:1px solid #eee; }
+#timer { font-weight: bold; margin-bottom: 12px; color: #d9534f; }
+
+/* Result Page */
+.result-header { margin-bottom: 20px; }
+.result-banner { padding: 12px; border-radius: 6px; font-weight: bold; font-size: 18px; margin: 10px 0; }
+.result-banner.pass { background: #d4edda; color: #155724; }
+.result-banner.fail { background: #f8d7da; color: #721c24; }
+.score-display { background: #e7f3ff; padding: 15px; border-radius: 6px; margin: 15px 0; }
+.answer-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.answer-table th, .answer-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.answer-table th { background: #f2f2f2; }
+.answer-table tr.correct { background: #d4edda; }
+.answer-table tr.wrong { background: #f8d7da; }
+.correct-text { color: #28a745; font-weight: bold; }
+.wrong-text { color: #dc3545; font-weight: bold; }
+.result-actions { margin-top: 20px; }
+
+/* Results Table */
+.results-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+.results-table th, .results-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.results-table th { background: #f2f2f2; }
+.pass-badge { background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 3px; }
+.fail-badge { background: #f8d7da; color: #721c24; padding: 4px 8px; border-radius: 3px; }
+
+/* Analytics */
+.analytics-section { margin-bottom: 20px; }
+.analytics-section select { padding: 8px; font-size: 14px; }
+.analytics-summary { background: #e7f3ff; padding: 15px; border-radius: 6px; margin: 15px 0; }
+.analytics-summary p { margin: 5px 0; }
+.attempts-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+.attempts-table th, .attempts-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.attempts-table th { background: #f2f2f2; }
+
+/* Leaderboard */
+.leaderboard-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+.leaderboard-table th, .leaderboard-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+.leaderboard-table th { background: #f2f2f2; }
+#refresh-info { font-size: 12px; color: #666; margin-bottom: 10px; }

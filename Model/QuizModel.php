@@ -132,5 +132,40 @@ class QuizModel {
         $row = mysqli_fetch_assoc($result);
         return $row['count'] > 0;
     }
+
+    public function getPublishedQuizzes() {
+        $sql = "SELECT * FROM quizzes WHERE status = 'published' ORDER BY created_at DESC";
+        $result = mysqli_query($this->conn, $sql);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public function getQuizWithQuestions($quizId) {
+        $sql = "SELECT * FROM quizzes WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $quizId);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        $quiz = mysqli_fetch_assoc($res);
+        if(!$quiz) return null;
+
+        $sqlQ = "SELECT * FROM questions WHERE quiz_id = ? ORDER BY order_index";
+        $stmtQ = mysqli_prepare($this->conn, $sqlQ);
+        mysqli_stmt_bind_param($stmtQ, "i", $quizId);
+        mysqli_stmt_execute($stmtQ);
+        $questionsRes = mysqli_stmt_get_result($stmtQ);
+
+        $quiz['questions'] = [];
+        while($q = mysqli_fetch_assoc($questionsRes)){
+            $sqlO = "SELECT * FROM options WHERE question_id = ?";
+            $stmtO = mysqli_prepare($this->conn, $sqlO);
+            mysqli_stmt_bind_param($stmtO, "i", $q['id']);
+            mysqli_stmt_execute($stmtO);
+            $optsRes = mysqli_stmt_get_result($stmtO);
+            $q['options'] = mysqli_fetch_all($optsRes, MYSQLI_ASSOC);
+            $quiz['questions'][] = $q;
+        }
+
+        return $quiz;
+    }
 }
 ?>
