@@ -1,0 +1,39 @@
+body {
+    font-family: 'Times New Roman';
+    background: lightgray;
+    padding: 30px;
+}
+
+.dashboard {
+    background: white;
+    padding: 20px;
+    width: 600px;
+    margin: auto;
+    border: 1px solid gray;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+}
+
+p { color: black; }
+
+.box {
+    background: SkyBlue;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid gray;
+}
+
+.box h3 { color: black; }
+.box p  { color: black; }
+
+.logout {
+    float: right;
+    padding: 8px 16px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
