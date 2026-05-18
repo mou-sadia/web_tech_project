@@ -23,6 +23,6 @@ function toggleUser(userId){
             }
         }
     };
-    xhttp.open("POST", "/quiz_platform/controller/AuthController.php", true);
+    xhttp.open("POST", "../controller/AuthController.php", true);
     xhttp.send(formData);
 }

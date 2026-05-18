@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: /quiz_platform/view/login.php");
+header("Location: ../view/login.php");
 exit();
 ?>

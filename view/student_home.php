@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student'){
-    header("Location: /quiz_platform/view/login.php");
+    header("Location: ../view/login.php");
     exit();
 }
 ?>
@@ -9,14 +9,14 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student'){
 <html lang="en">
 <head>
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="/quiz_platform/view/css/student.css">
+    <link rel="stylesheet" href="../view/css/student.css">
 </head>
 <body>
 
 <div class="dashboard">
 
     <button class="logout"
-        onclick="window.location.href='/quiz_platform/controller/logout.php'">
+        onclick="window.location.href='../controller/logout.php'">
         Logout
     </button>
 

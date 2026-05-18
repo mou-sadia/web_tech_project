@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="/quiz_platform/view/css/register.css">
+    <link rel="stylesheet" href="../view/css/register.css">
 </head>
 <body>
 
@@ -40,12 +40,12 @@
 
     <div class="login-link">
         Already have an account?
-        <a href="/quiz_platform/view/login.php">Login here</a>
+        <a href="../view/login.php">Login here</a>
     </div>
 
 </div>
 
-<script src="/quiz_platform/controller/ajax/register.js"></script>
+<script src="../controller/ajax/register.js"></script>
 
 </body>
 </html>

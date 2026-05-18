@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="/quiz_platform/view/css/login.css">
+    <link rel="stylesheet" href="../view/css/login.css">
 </head>
 <body>
 
@@ -26,12 +26,12 @@
     <p id="loginMessage"></p>
 
     <div class="register-link">
-        Don't have an account? <a href="/quiz_platform/view/register.php">Register here</a>
+        Don't have an account? <a href="../view/register.php">Register here</a>
     </div>
 
 </div>
 
-<script src="/quiz_platform/controller/ajax/login.js"></script>
+<script src="../controller/ajax/login.js"></script>
 
 </body>
 </html>
