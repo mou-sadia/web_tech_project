@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
     <title>Login</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/login.css">
-=======
+
     <link rel="stylesheet" href="../view/css/login.css">
->>>>>>> moumita
+
 </head>
 <body>
 
