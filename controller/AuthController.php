@@ -23,6 +23,8 @@ if(isset($_POST['action']) && $_POST['action'] == "register"){
 
     if(empty($email)){
         $errors['email'] = "Email is required";
+    }else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errors['email'] = "Invalid email format";
     }else{
         $check = $model->checkEmail($email);
         if(mysqli_num_rows($check) > 0){
@@ -106,7 +108,7 @@ if(isset($_POST['action']) && $_POST['action'] == "login"){
     exit();
 }
 
-// admin atv/not
+// actv/not
 if(isset($_POST['action']) && $_POST['action'] == "toggle_active"){
 
     if($_SESSION['role'] !== 'admin'){
