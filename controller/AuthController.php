@@ -87,17 +87,17 @@ if(isset($_POST['action']) && $_POST['action'] == "login"){
             if($user['role'] == 'student'){
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => "/quiz_platform/view/student_home.php"
+                    "redirect" => "../view/student_home.php"
                 ]);
             }else if($user['role'] == 'instructor'){
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => "/quiz_platform/view/instructor_home.php"
+                    "redirect" => "../view/instructor_home.php"
                 ]);
             }else{
                 echo json_encode([
                     "success"  => "Login Successful",
-                    "redirect" => "/quiz_platform/view/admin_panel.php"
+                    "redirect" => "../view/admin_panel.php"
                 ]);
             }
             exit();

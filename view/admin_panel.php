@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin'){
-    header("Location: /quiz_platform/view/login.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -13,14 +13,14 @@ $users = $model->getAllUsers();
 <html lang="en">
 <head>
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="/quiz_platform/view/css/admin.css">
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
 <div class="panel">
 
     <button class="logout"
-        onclick="window.location.href='/quiz_platform/controller/logout.php'">
+        onclick="window.location.href='../controller/logout.php'">
         Logout
     </button>
 
@@ -64,7 +64,7 @@ $users = $model->getAllUsers();
 
 </div>
 
-<script src="/quiz_platform/controller/ajax/admin.js"></script>
+<script src="../controller/ajax/admin.js"></script>
 
 </body>
 </html>
