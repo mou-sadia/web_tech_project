@@ -1,6 +1,3 @@
-// Quiz Manager JS - For AJAX operations
-
-// Toggle quiz status (Publish/Unpublish)
 document.querySelectorAll('.btn-toggle').forEach(function(button) {
     button.addEventListener('click', function() {
         var quizId = this.dataset.quizId;
@@ -36,7 +33,6 @@ document.querySelectorAll('.btn-toggle').forEach(function(button) {
     });
 });
 
-// Delete Question
 function setupDeleteButtons() {
     document.querySelectorAll('.btn-delete-question').forEach(function(button) {
         button.removeEventListener('click', handleDeleteClick);
@@ -61,7 +57,6 @@ function handleDeleteClick(event) {
                 if (response.success) {
                     questionCard.remove();
                     alert('Question deleted');
-                    location.reload();
                 } else {
                     alert(response.error || 'Failed to delete');
                     button.disabled = false;
@@ -79,7 +74,6 @@ function handleDeleteClick(event) {
     }
 }
 
-// Edit Question Inline
 function setupEditButtons() {
     document.querySelectorAll('.btn-edit-question').forEach(function(button) {
         button.removeEventListener('click', handleEditClick);
@@ -161,8 +155,6 @@ function escapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
-
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     setupDeleteButtons();
     setupEditButtons();

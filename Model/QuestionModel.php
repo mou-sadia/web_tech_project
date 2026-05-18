@@ -1,5 +1,5 @@
 <?php
-include "../config/db.php";
+include __DIR__ . "/../config/db.php";
 
 class QuestionModel {
     
@@ -11,7 +11,7 @@ class QuestionModel {
     }
 
     public function addQuestion($quizId, $questionText, $marks, $options, $correctOptionIndex) {
-        
+
         $sql = "SELECT COALESCE(MAX(order_index), 0) + 1 as next_order FROM questions WHERE quiz_id = ?";
         $stmt = mysqli_prepare($this->conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $quizId);
@@ -65,7 +65,7 @@ class QuestionModel {
         
         $result = array();
         while($question = mysqli_fetch_assoc($questions)) {
-            // Get options for this question
+
             $sql = "SELECT * FROM options WHERE question_id = ?";
             $stmt2 = mysqli_prepare($this->conn, $sql);
             mysqli_stmt_bind_param($stmt2, "i", $question['id']);
@@ -114,18 +114,34 @@ class QuestionModel {
     }
     
     public function deleteQuestion($questionId, $quizId, $instructorId) {
-        $sql = "DELETE q FROM questions q 
+
+        $checkSql = "SELECT q.id FROM questions q 
                 INNER JOIN quizzes qu ON q.quiz_id = qu.id 
-                WHERE q.id = ? AND q.quiz_id = ? AND qu.instructor_id = ?";
-        $stmt = mysqli_prepare($this->conn, $sql);
-        mysqli_stmt_bind_param($stmt, "iii", $questionId, $quizId, $instructorId);
-        
-        if(mysqli_stmt_execute($stmt)) {
-            $this->updateQuizTotalMarks($quizId);
-            return true;
+                     WHERE q.id = ? AND q.quiz_id = ? AND qu.instructor_id = ?";
+        $stmt = mysqli_prepare($this->conn, $checkSql);
+         mysqli_stmt_bind_param($stmt, "iii", $questionId, $quizId, $instructorId);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+    
+         if(mysqli_num_rows($result) == 0) {
+                return false;
         }
-        return false;
+    
+        $sql1 = "DELETE FROM options WHERE question_id = ?";
+        $stmt1 = mysqli_prepare($this->conn, $sql1);
+        mysqli_stmt_bind_param($stmt1, "i", $questionId);
+        mysqli_stmt_execute($stmt1);
+    
+        $sql2 = "DELETE FROM questions WHERE id = ? AND quiz_id = ?";
+        $stmt2 = mysqli_prepare($this->conn, $sql2);
+        mysqli_stmt_bind_param($stmt2, "ii", $questionId, $quizId);
+    
+        if(mysqli_stmt_execute($stmt2)) {
+        $this->updateQuizTotalMarks($quizId);
+        return true;
     }
+    return false;
+}
     
     public function updateQuizTotalMarks($quizId) {
         $sql = "UPDATE quizzes 

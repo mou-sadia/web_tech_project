@@ -22,7 +22,6 @@ $quizModel = new QuizModel();
 $questionModel = new QuestionModel();
 $instructorId = $_SESSION["user_id"];
 
-// Get current quiz
 $result = $quizModel->getQuizById($quizId, $instructorId);
 $quiz = mysqli_fetch_assoc($result);
 
@@ -31,7 +30,6 @@ if(!$quiz) {
     exit();
 }
 
-// If trying to publish, check if has questions
 if($quiz['status'] == 'draft') {
     $hasQuestions = $questionModel->hasQuestions($quizId, $instructorId);
     if(!$hasQuestions) {
