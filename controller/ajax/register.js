@@ -30,7 +30,7 @@ document.getElementById("registerForm")
                 }else if(data.success){
                     document.getElementById("message").innerHTML = data.success;
                     setTimeout(function(){
-                        window.location.href = "/quiz_platform/view/login.php";
+                        window.location.href = "../view/login.php";
                     }, 2000);
                 }
             }
